@@ -73,6 +73,8 @@
                     echo '<div class="card-panel light-blue darken-2"><div class="container">
                     <a href="eliminar.php?pozo=' . $obtenerNombre['nombrePozo'] . '" class="waves-effect waves-light btn light-blue darken-4 right">Eliminar
                     </a>
+                    <a href="editar.php?pozo=' . $obtenerNombre['nombrePozo'] . '" class="waves-effect waves-light btn light-blue darken-4 right">Editar
+                    </a>
                     <a href="ver.php?pozoNombre=' . $obtenerNombre['nombrePozo'] . '" class="waves-effect waves-light btn light-blue darken-4 right">Ver
                     </a>' . ' ' . $obtenerNombre['nombrePozo'] . 
                     '</div></div>';

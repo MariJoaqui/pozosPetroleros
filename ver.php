@@ -43,8 +43,6 @@
         <div class="container section black-text">
 
             <div class="section">
-
-                <h5>Histórico: </h5>
             
                 <?php
 
@@ -52,29 +50,40 @@
 
                 $ver = $_GET['pozoNombre'];
 
+                echo '<h5>Histórico del ' . $ver . ': </h5>';
+
+                ?>
+
+            </div>
+
+            <div class="section">
+
+                <?php
+
                 $consulta = "SELECT * FROM propiedades WHERE nombrePozo='$ver'"; 
                 $resultado = mysqli_query($conexion, $consulta);
 
                 echo '<div class="container">
                         <div class="row light-blue darken-2">
-                            <div class="col s12 m4 l4"><p>Nombre del Pozo</p></div>
-                            <div class="col s12 m4 l4"><p>Medición</p></div>
-                            <div class="col s12 m4 l4"><p>Fecha de medición</p></div>
+                            <div class="col s12 m4 l6"><p>Medición</p></div>
+                            <div class="col s12 m4 l6"><p>Fecha de medición</p></div>
                         </div>
                     </div>';
-    
-                while ($obtener = mysqli_fetch_array($resultado)) {
                     
-                    echo '<div class="container">
-                            <div class="row light-blue lighten-3">
-                                <div class="col s12 m4 l4"><p>' . $obtener['nombrePozo'] . '</p></div>
-                                <div class="col s12 m4 l4"><p>' . $obtener['medidas'] . '</p></div>
-                                <div class="col s12 m4 l4"><p>' . $obtener['fecha'] . '</p></div>
-                            </div>
-                        </div>';
-                }
+                    while ($obtener = mysqli_fetch_array($resultado)) {
+                        
+                        echo '<div class="container">
+                                <div class="row light-blue lighten-3">
+                                    <div class="col s12 m4 l6"><p>' . $obtener['medidas'] . '</p></div>
+                                    <div class="col s12 m4 l6"><p>' . $obtener['fecha'] . '</p></div>
+                                </div>
+                            </div>';
+                    }
 
-                mysqli_close($conexion);
+                    echo '<a href="grafica.php?pozo=' . $ver . '"
+                         class="waves-effect waves-light btn light-blue darken-4">Gráfica</a>';
+
+                    mysqli_close($conexion);
 
                 ?>
 
@@ -83,8 +92,9 @@
             <div class="divider"></div>
 
             <div class="section">
-            <a href="grafica.html" class="waves-effect waves-light btn light-blue darken-4">ir</a>
-               
+
+                <a href="index.php" class="waves-effect waves-light btn light-blue darken-4">Volver</a>
+
             </div>
 
             <div class="divider"></div>
