@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="librerias/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.6.3.min.js"></script>
 </head>
 <body>
 
@@ -41,48 +44,49 @@
 
             <div class="section">
 
-                <h5>Pozos petroleros: </h5>
+                <h5>Histórico: </h5>
+            
+                <?php
 
-                <p>Aquí se mostrarán los pozos petroleros existentes con sus mediciones en el manómetro y fecha,
-                    usted podrá agregar nuevos, editarlos o eliminarlos; además, podrá visualizar una gráfica del
-                    de las diferentes mediciones proceso.</p>
-            </div>
+                include_once("conexion.php");
 
-            <div class="section">
+                $ver = $_GET['pozoNombre'];
 
-                <a href="crearPozo.php" class="waves-effect waves-light btn light-blue darken-4">Crear nuevo pozo</a>
-                <a href="añadirPropiedades.php" class="waves-effect waves-light btn light-blue darken-4">Añadir nueva medicion</a>
+                $consulta = "SELECT * FROM propiedades WHERE nombrePozo='$ver'"; 
+                $resultado = mysqli_query($conexion, $consulta);
+
+                echo '<div class="container">
+                        <div class="row light-blue darken-2">
+                            <div class="col s12 m4 l4"><p>Nombre del Pozo</p></div>
+                            <div class="col s12 m4 l4"><p>Medición</p></div>
+                            <div class="col s12 m4 l4"><p>Fecha de medición</p></div>
+                        </div>
+                    </div>';
+    
+                while ($obtener = mysqli_fetch_array($resultado)) {
+                    
+                    echo '<div class="container">
+                            <div class="row light-blue lighten-3">
+                                <div class="col s12 m4 l4"><p>' . $obtener['nombrePozo'] . '</p></div>
+                                <div class="col s12 m4 l4"><p>' . $obtener['medidas'] . '</p></div>
+                                <div class="col s12 m4 l4"><p>' . $obtener['fecha'] . '</p></div>
+                            </div>
+                        </div>';
+                }
+
+                mysqli_close($conexion);
+
+                ?>
 
             </div>
 
             <div class="divider"></div>
 
             <div class="section">
-
-                <h5>Pozos existentes: </h5>
-
-                <?php
-
-                include_once("conexion.php");
-
-                $mostrar = "SELECT * FROM pozos"; 
-                $consulta = mysqli_query($conexion, $mostrar);
-
-                while ($obtenerNombre = mysqli_fetch_array($consulta)) {
-                    
-                    echo '<div class="card-panel light-blue darken-2"><div class="container">
-                    <a href="eliminar.php?pozo=' . $obtenerNombre['nombrePozo'] . '" class="waves-effect waves-light btn light-blue darken-4 right">Eliminar
-                    </a>
-                    <a href="ver.php?pozoNombre=' . $obtenerNombre['nombrePozo'] . '" class="waves-effect waves-light btn light-blue darken-4 right">Ver
-                    </a>' . ' ' . $obtenerNombre['nombrePozo'] . 
-                    '</div></div>';
-                }
-
-                mysqli_close($conexion);
-                ?>
-
+            <a href="grafica.html" class="waves-effect waves-light btn light-blue darken-4">ir</a>
+               
             </div>
-                
+
             <div class="divider"></div>
 
         </div>

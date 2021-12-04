@@ -11,19 +11,8 @@ $agregarBDD = "INSERT INTO propiedades (nombrePozo, medidas, fecha)
 
 $resultado = mysqli_query($conexion, $agregarBDD);
 
-echo $nombrePozo;
-
-if ($resultado) {
-    ?>
-    <h3>Se añadió el pozo</h3>
-    <?php
-} 
-    else {
-        ?>
-        <h3>Error al añadir pozo</h3>
-        <?php
-    }
-
 mysqli_close($conexion);
+
+header("Location: index.php");
 
 ?>

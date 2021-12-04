@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.plot.ly/plotly-2.6.3.min.js"></script>
+</head>
+<body>
+    <div id="chart"></div>
+<script>
+var trace1 = {
+  x: [1, 2, 3, 4, 5],
+  y: [1, 2, 3, 4, 5],
+  type: 'lines',
+  name:'Datos 1',
+  line:{ width: 5, color:'red',dash:'solid'},
+  marker:{ size: 10, color:'blue'}
+};
+var trace2 = {
+  x: [1, 2, 3, 4, 5],
+  y: [5, 4, 3, 2, 1],
+  type: 'lines',
+  name:'Datos 2',
+  line:{ width: 5, color:'blue',dash:'solid'},
+  marker:{ size: 10, color:'red'}
+};
+var data = [trace1, trace2];
+Plotly.newPlot('chart', data,{title:'Grafica Ejemplo Plot.ly'});
+</script>
+</body>
+</html>
