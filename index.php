@@ -50,7 +50,8 @@
 
             <div class="section">
 
-                <a href="crearPozo.php" class="waves-effect waves-light btn light-blue darken-4">Añadir</a>
+                <a href="crearPozo.php" class="waves-effect waves-light btn light-blue darken-4">Crear nuevo pozo</a>
+                <a href="añadirPropiedades.php" class="waves-effect waves-light btn light-blue darken-4">Añadir nueva medicion</a>
 
             </div>
 
@@ -58,7 +59,7 @@
 
             <div class="section">
 
-                <h5>Existentes: </h5>
+                <h5>Pozos existentes: </h5>
 
                 <?php
 
@@ -72,7 +73,7 @@
                     echo '<div class="card-panel light-blue darken-2"><div class="container">
                     <a href="eliminar.php?pozo=' . $obtenerNombre['nombrePozo'] . '" class="waves-effect waves-light btn light-blue darken-4 right">Eliminar
                     </a>
-                    <a href="añadirPropiedades.php?añadir=' . $obtenerNombre['nombrePozo'] . '" class="waves-effect waves-light btn light-blue darken-4 right">Agregar
+                    <a href="crearPozo.php" class="waves-effect waves-light btn light-blue darken-4 right">Agregar Nuevo
                     </a>' . ' ' . $obtenerNombre['nombrePozo'] . 
                     '</div></div>';
                 }

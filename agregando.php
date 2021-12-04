@@ -2,19 +2,28 @@
 
 include_once("conexion.php");
 
-    if (isset($_POST['agg']) == 'si') {
-        
-        $medicion = $_POST['medicion']; 
-        $fecha = $_POST['fecha']; 
+$nombrePozo = $_POST['nombrePozo'];
+$medicion = $_POST['medicion'];
+$fecha = $_POST['fecha'];
 
-        $agregarBDD = "INSERT INTO propiedades (medidas, fecha) 
-                        VALUES ('$medicion', '$fecha')";
+$agregarBDD = "INSERT INTO propiedades (nombrePozo, medidas, fecha) 
+                VALUES ('$nombrePozo', '$medicion', '$fecha')";
 
-        $resultado = mysqli_query($conexion, $agregarBDD);
+$resultado = mysqli_query($conexion, $agregarBDD);
 
-        header("Location: añadirPropiedades.php");
+echo $nombrePozo;
+
+if ($resultado) {
+    ?>
+    <h3>Se añadió el pozo</h3>
+    <?php
+} 
+    else {
+        ?>
+        <h3>Error al añadir pozo</h3>
+        <?php
     }
 
-    mysqli_close($conexion);
+mysqli_close($conexion);
 
 ?>

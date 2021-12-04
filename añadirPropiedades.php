@@ -52,7 +52,31 @@
 
     <div class="container">
         <div class="row">
-            <form class="col s12" action="" method="post">
+            <form class="col s12" action="agregando.php" method="post">
+                <div class="input-field col s4">
+                    <select name="nombrePozo">
+                        <option disabled selected>Escoja una opción</option>
+
+                        <?php
+
+                        include_once("conexion.php");
+
+                        $mostrar = "SELECT * FROM pozos";
+                        $consulta = mysqli_query($conexion, $mostrar);
+
+                        while ($obtenerID = mysqli_fetch_array($consulta)) {
+                            echo '<option>' . $obtenerID['nombrePozo'] . '</option>';
+                        }
+                        
+                        mysqli_close($conexion);
+
+                        ?>
+
+                    </select>
+                    
+                    <label>¿Qué pozo desea escoger?</label>
+                </div>
+
                 <div class="row">
                     <div class="input-field col s6">
                         <input id="input_text" type="text" data-length="10" name="medicion" required>
@@ -62,25 +86,24 @@
 
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="input_date" type="date" data-length="10" name="fecha" required>
+                        <input id="input_text" type="text" data-length="10" name="fecha" required>
                         <label class="light-blue-text text-darken-4" for="input_text">Fecha:</label>
+                        <?php echo 'Escribir la fecha en el siguiente formato: '. date('Y-m-d');?>
                     </div>
                 </div>
                 
-                <button class="btn waves-effect waves-light light-blue darken-4" type="submit" name="agg" value="si">Agregar</button>
+                <button class="btn waves-effect waves-light light-blue darken-4" type="submit" name="action" value="si">Agregar</button>
             </form>
         </div>
     </div>
 
     <?php
-
+/*
     include_once("conexion.php");
-
-    $agregar = $_GET['añadir'];
 
     if (isset($_POST['agg']) == 'si') {
 
-        $obtener = "SELECT id_pozo FROM pozos WHERE añadir='$agregar'"; 
+        //$obtener = "SELECT id_pozo FROM pozos WHERE añadir='$agregar'"; 
         $consulta = mysqli_query($conexion, $obtener);
 
         $medicion = $_POST['medicion']; 
@@ -94,7 +117,7 @@
     }
 
     mysqli_close($conexion);
-
+*/
     ?>
 
     <!--FOOTER-->
