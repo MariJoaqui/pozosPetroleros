@@ -97,29 +97,6 @@
         </div>
     </div>
 
-    <?php
-/*
-    include_once("conexion.php");
-
-    if (isset($_POST['agg']) == 'si') {
-
-        //$obtener = "SELECT id_pozo FROM pozos WHERE añadir='$agregar'"; 
-        $consulta = mysqli_query($conexion, $obtener);
-
-        $medicion = $_POST['medicion']; 
-        $fecha = $_POST['fecha']; 
-
-        $agregarBDD2 = "INSERT INTO propiedades (id_propiedades, medidas, fecha) 
-                        VALUES ('$consulta', '$medicion', '$fecha')";
-
-        $resultado = mysqli_query($conexion, $agregarBDD2);
-
-    }
-
-    mysqli_close($conexion);
-*/
-    ?>
-
     <!--FOOTER-->
 
     <footer class="page-footer light-blue darken-3">
